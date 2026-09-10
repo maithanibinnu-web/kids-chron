@@ -1,0 +1,473 @@
+@import "tailwindcss";
+
+/* ============================================================
+   KIDSCHRON DESIGN SYSTEM
+   Tokens are the single source of truth. Components never
+   hard-code hex values — they consume these tokens only.
+   ============================================================ */
+
+@theme {
+  /* ---- Brand palette -------------------------------------- */
+  /* Deep blue = trust, intelligence, the "knowledge" anchor    */
+  --color-navy-50: #eef3f8;
+  --color-navy-100: #d8e4ef;
+  --color-navy-200: #b0c7dc;
+  --color-navy-300: #7fa3c2;
+  --color-navy-400: #4d7ba3;
+  --color-navy-500: #2c5c87;
+  --color-navy-600: #1d476c;
+  --color-navy-700: #163a58;
+  --color-navy-800: #12324f;
+  --color-navy-900: #0c2338;
+  --color-navy-950: #071726;
+
+  /* Blue = primary action, links, curiosity                    */
+  --color-blue-50: #eef4fd;
+  --color-blue-100: #d9e6fa;
+  --color-blue-200: #b9d1f5;
+  --color-blue-300: #8bb3ee;
+  --color-blue-400: #578ee2;
+  --color-blue-500: #2f6fd6;
+  --color-blue-600: #2459b6;
+  --color-blue-700: #1d4189;
+  --color-blue-800: #1a3872;
+  --color-blue-900: #17305f;
+
+  /* Green = planet, growth, nature                             */
+  --color-leaf-50: #f2f8ea;
+  --color-leaf-100: #e3f1d3;
+  --color-leaf-200: #c8e3a9;
+  --color-leaf-300: #a6d075;
+  --color-leaf-400: #84b845;
+  --color-leaf-500: #6e9e28;
+  --color-leaf-600: #578020;
+  --color-leaf-700: #44631d;
+  --color-leaf-800: #354d1c;
+  --color-leaf-900: #2a4718;
+
+  /* Warm yellow = energy, discovery, highlight                 */
+  --color-sun-50: #fff9e8;
+  --color-sun-100: #fff0c2;
+  --color-sun-200: #ffe28a;
+  --color-sun-300: #ffce47;
+  --color-sun-400: #fbb914;
+  --color-sun-500: #e59d05;
+  --color-sun-600: #c07803;
+  --color-sun-700: #9a5607;
+  --color-sun-800: #7f440d;
+  --color-sun-900: #6c3810;
+
+  /* Red = accent only. Never used for large areas.             */
+  --color-coral-50: #fdf0ef;
+  --color-coral-100: #fbdcda;
+  --color-coral-200: #f7bcb8;
+  --color-coral-300: #f0908c;
+  --color-coral-400: #e45a55;
+  --color-coral-500: #d0201f;
+  --color-coral-600: #b01a19;
+  --color-coral-700: #8f1716;
+  --color-coral-800: #761716;
+  --color-coral-900: #641817;
+
+  /* Neutral / paper                                            */
+  --color-paper: #ffffff;
+  --color-cream: #fdfaf4;
+  --color-mist: #f4f7fb;
+  --color-line: #e4e9f0;
+  --color-ink: #16202e;
+  --color-ink-soft: #46536a;
+  --color-ink-mute: #6d7a90;
+
+  /* ---- Typography ----------------------------------------- */
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+
+  /* ---- Radii ----------------------------------------------- */
+  --radius-card: 1.25rem;
+  --radius-xl2: 1.75rem;
+  --radius-blob: 2.5rem;
+
+  /* ---- Shadows: soft, editorial, never heavy ---------------- */
+  --shadow-soft: 0 1px 2px rgb(16 44 79 / 0.04), 0 8px 24px -12px rgb(16 44 79 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(16 44 79 / 0.05), 0 18px 40px -20px rgb(16 44 79 / 0.28);
+  --shadow-inset-line: inset 0 0 0 1px var(--color-line);
+
+  /* ---- Motion ---------------------------------------------- */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-float: float 7s var(--ease-out-soft) infinite;
+  --animate-float-slow: float 11s var(--ease-out-soft) infinite;
+  --animate-drift: drift 16s linear infinite;
+  --animate-rise: rise 0.7s var(--ease-out-soft) both;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-pop: pop 0.32s var(--ease-out-soft) both;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes drift {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.72);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.24);
+  }
+}
+
+@keyframes hero-planet-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+@keyframes hero-ring-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-18deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(-18deg);
+  }
+}
+
+.kidschron-space-hero {
+  background:
+    radial-gradient(90% 100% at 80% -10%, rgb(58 99 255 / 0.98) 0%, transparent 58%),
+    radial-gradient(55% 80% at 10% 22%, rgb(35 60 190 / 0.72) 0%, transparent 70%),
+    linear-gradient(145deg, #14298f 0%, #111d68 58%, #0b1348 100%);
+}
+
+.hero-space-star {
+  position: absolute;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 0 7px rgb(255 255 255 / 0.55);
+  animation: hero-twinkle 3.2s ease-in-out infinite;
+}
+
+.hero-planet {
+  position: absolute;
+  border-radius: 999px;
+  box-shadow: inset -16px -16px 32px rgb(0 0 0 / 0.3), 0 18px 40px rgb(6 12 56 / 0.25);
+  animation: hero-planet-float 9s ease-in-out infinite;
+}
+
+.hero-planet-warm {
+  right: 5.5%;
+  top: 13%;
+  width: 7.5rem;
+  height: 7.5rem;
+  background: radial-gradient(circle at 32% 28%, #ffe18f, #ff9b45 53%, #cf541b 100%);
+}
+
+.hero-planet-violet {
+  bottom: 20%;
+  left: 3%;
+  width: 4.75rem;
+  height: 4.75rem;
+  background: radial-gradient(circle at 34% 28%, #c6b7ff, #8066ec 58%, #4930b8 100%);
+  animation-duration: 11s;
+  animation-direction: reverse;
+}
+
+.hero-planet-ring {
+  position: absolute;
+  right: 3.9%;
+  top: calc(13% + 2.3rem);
+  width: 10.5rem;
+  height: 3.5rem;
+  border: 3px solid rgb(255 206 71 / 0.65);
+  border-radius: 50%;
+  animation: hero-ring-float 9s ease-in-out infinite;
+}
+
+@media (max-width: 767px) {
+  .hero-planet-warm {
+    right: -2.5rem;
+    top: 8%;
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .hero-planet-ring {
+    right: -4rem;
+    top: calc(8% + 1.7rem);
+    width: 9rem;
+  }
+
+  .hero-planet-violet {
+    bottom: 8%;
+    left: -2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-space-star,
+  .hero-planet,
+  .hero-planet-ring {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --header-h: 72px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 16px);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Fraunces is a variable font with SOFT and WONK axes. Softening
+     the terminals and letting the wonk in is what stops the display
+     face reading as a stiff corporate serif — it gives headings a
+     friendly, hand-set warmth without tipping into cartoon. */
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 600;
+    /* SOFT rounds the terminals — warmth. WONK stays at 0: its
+       alternate letterforms (notably the ampersand) are eccentric
+       enough to trip up a young reader, and legibility outranks
+       flourish on a children's publication. */
+    font-variation-settings: "SOFT" 45, "WONK" 0, "opsz" 40;
+    letter-spacing: -0.015em;
+    line-height: 1.12;
+    color: var(--color-navy-900);
+    text-wrap: balance;
+  }
+
+  h1 {
+    font-variation-settings: "SOFT" 55, "WONK" 0, "opsz" 96;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible, generous focus ring on every interactive element. */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--color-blue-500);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: var(--color-sun-200);
+    color: var(--color-navy-900);
+  }
+
+  /* Respect the user's motion preference — non-negotiable. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+
+@utility container-kc {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  max-width: 78rem;
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+}
+
+/* Highlighter stroke behind a key headline word. Sits inside the
+   word's own body rather than under its descenders, so it reads as a
+   marker pass over the text — not as a rule beneath it. */
+@utility marker-sun {
+  background-image: linear-gradient(
+    var(--color-sun-300),
+    var(--color-sun-300)
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 0.3em;
+  background-position: 0 84%;
+  padding-inline: 0.06em;
+}
+
+@utility marker-leaf {
+  background-image: linear-gradient(
+    var(--color-leaf-200),
+    var(--color-leaf-200)
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 0.3em;
+  background-position: 0 84%;
+  padding-inline: 0.06em;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility text-balance-tight {
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+}
+
+/* Scroll-reveal: elements start hidden and are revealed by an
+   IntersectionObserver. If JS never runs, `no-js` keeps them
+   visible — content is never trapped behind an animation. */
+@layer components {
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.7s var(--ease-out-soft),
+      transform 0.7s var(--ease-out-soft);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible,
+  html.no-js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+
+  .prose-kc {
+    max-width: 68ch;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-ink-soft);
+  }
+  .prose-kc > * + * {
+    margin-top: 1.15em;
+  }
+  .prose-kc h2 {
+    font-size: 1.6rem;
+    margin-top: 2.2em;
+    color: var(--color-navy-900);
+  }
+  .prose-kc h3 {
+    font-size: 1.25rem;
+    margin-top: 1.8em;
+    color: var(--color-navy-900);
+  }
+  .prose-kc strong {
+    color: var(--color-navy-900);
+    font-weight: 650;
+  }
+  .prose-kc ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  .prose-kc ul > li {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-top: 0.5em;
+  }
+  .prose-kc ul > li::before {
+    content: "";
+    position: absolute;
+    left: 0.25rem;
+    top: 0.62em;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 999px;
+    background: var(--color-leaf-400);
+  }
+  .prose-kc blockquote {
+    border-left: 4px solid var(--color-sun-300);
+    padding-left: 1.1rem;
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--color-navy-800);
+  }
+}
